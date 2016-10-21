@@ -40,8 +40,9 @@ Enter an infix expression:
 Deliverables:
 
 1. Create a branch from master, to keep your code separate.
-2. Name your program `infixCalc.py` and commit it to your branch. Update the existing `Token` and `Scanner` classes as needed, in their respective files.
-3. When you are satisfied that your program is working, issue a pull request with an @mention (BergProfJ), and also indicate which problem you completed (in this case, Problem 1: Infix Calculator).
+2. Name your program `infixCalc.py` and commit it to your branch when complete. 
+3. Update the existing `Token` and `Scanner` classes as needed, in their respective files.
+4. When you are satisfied that your program is working, issue a pull request with an @mention (BergProfJ), and also indicate which problem you completed (in this case, Problem 1: Infix Calculator).
 
 You should find all necessary resources, including your author's code for the postfix expression evaluator, in the project repository. (You will also find other files that are not germane to this problem: please leave them in place.)
 
@@ -65,18 +66,86 @@ Code style, comments, structure | 3 pts
 
 This problem is based on [LM] Project #9, pp. 209.
 
-Write a program that solves the maze problem discussed [on pp. 183-185). 
+Write a program that solves the maze problem discussed on pp. 183-185. Your program should use the `Grid` developed in Chapter 4 [and available in this repository] in this problem, to store a 2-dimensional representation of a given maze.
 
-Your program should use the `Grid` developed in Chapter 4 [and available in this repository] in this problem.
+The program should input the description of the maze from a text file at start-up. Prompt the user to enter the name/path of the particular maze file (handle gracefully if the user-specified file does not exist). You may assume the file contains a properly-formatted maze. Sample mazes created by your classmates are available within the `mazefiles` subdirectory of this repository. 
 
-The program should input the description of the maze from a text file at start-up. Sample mazes created by your classmates are available within the `mazefiles` subdirectory of this repository. Prompt the user to enter the name/path of the particular maze file (handle gracefully if the user-specified file does not exist). You may assume the file contains a properly-formatted maze.
+Before you display the maze, convert all asterisks (*) to dashes (-), because I believe it makes the maze file easier to process visually.
 
-The program should then display the maze (unsolved), ask the user to hit `<enter>` when they are ready to see the solution, and then display the solved maze (i.e. with dots indicating the solution path.)  *(Hint:* the first task your program may need to perform is to determine the size of the given maze, *i.e.* number of rows and columns. Note that mazes are not necessarily square.)
+The program should then 
+
+1. display the maze (unsolved), 
+2. ask the user to hit `<enter>` when they are ready to see the solution, and then 
+3. display the solved maze *(i.e.* with a plus sign indicating the solution path.)  
+
+*(Hint:* the first task your program may need to perform is to determine the size of the given maze, *i.e.* number of rows and columns. Note that mazes are not necessarily square.)
+
+Solve the problem using the backtracking method, using a stack to hold paths not yet visited as described in the text.
+
+A sample run of your program might look as below:
+
+```
+Enter maze file name: mazefiles/lambert-maze.txt
+
+GIVEN MAZE:
+--------------------------------------------------
+-------                              -------- ----
+------- -------------- ------------- -------- ----
+------- -------------- ---         - ---      ----
+P       -------------- --  ------  - --- ---- ----
+------- ---         -- -  -------        ---- ----
+------- --- ------- -- -  ------------------- ----
+------- --- ------- --    ------------------- ----
+------- --- ------- ------------------------- ----
+------- --- --                      --------- ----
+---     --- -- ---- ---- -------------------- ----
+--- ---------- ---- ----               ------ ----
+--- ---------- ---- ------------------------- ----
+--- ---------- ---- ------------------------- ----
+---            ---- ------------ ------------ ----
+-------- ---------- ------------ ------------ ----
+-------- ---------- ------------      ------- ----
+--------      ----- ------------ ---- ------- ----
+-------------------              ---- ------- ----
+------------------------------------- ------- ----
+------------------------------------- ------------
+-------------------------------------            T
+--------------------------------------------------
+
+Hit <ENTER> to check for solution: 
+
+SOLUTION FOUND!
+--------------------------------------------------
+-------                              -------- ----
+------- -------------- ------------- -------- ----
+------- -------------- ---         - ---      ----
+P+++++++-------------- --  ------  - --- ---- ----
+-------+---         -- -  -------        ---- ----
+-------+--- ------- -- -  ------------------- ----
+-------+--- ------- --    ------------------- ----
+-------+--- ------- ------------------------- ----
+-------+--- --++++++                --------- ----
+---+++++--- --+----+---- -------------------- ----
+---+----------+----+----               ------ ----
+---+----------+----+------------------------- ----
+---+----------+----+------------------------- ----
+---++++++++++++----+------------ ------------ ----
+-------- ----------+------------ ------------ ----
+-------- ----------+------------++++++------- ----
+--------      -----+------------+----+------- ----
+-------------------++++++++++++++----+------- ----
+-------------------------------------+------- ----
+-------------------------------------+------------
+-------------------------------------++++++++++++T
+--------------------------------------------------
+```
+
+Note also that *(a)* not all maze files will have a solution (report "No solution found" in that case), while *(b)* other mazes may have more than one solution (report only the first solution you find in that case).
 
 Deliverables:
 
 1. Create a branch from master, to keep your code separate.
-2. Name your program `solver.py` and commit it to your branch. 
+2. Name your program `solver.py` and commit it to your branch when complete.
 3. When you are satisfied that your program is working, issue a pull request with an @mention (BergProfJ), and also indicate which problem you completed (in this case, Problem 2: Maze Solver).
 
 You should find all necessary resources, including your author's `Grid` class from Chapter 4, in the project repository. (You will also find other files that are not germane to this problem: please leave them in place.)
@@ -90,8 +159,8 @@ Commit file `solver.py` to branch | 1 pt
 Create pull request with appropriate @mention detail | 1 pt
 Main function prompts user for name of text file containing maze description, and properly opens that text file (or handles an exception if the file does not exist | 1 pt
 Program properly determines size (rows x cols) of the given maze, and utilizes appropriate data structure for storing the maze | 2 pts
-Program properly prints the unsolved maze to screen | 2 pts
-Program uses stack and backtracking to solve the problem, and makes certain to examine all unexamined paths from a given point until a solution is found | 5 pts
+Program properly prints the unsolved maze to screen, replacing asterisks with dashes | 3 pts
+Program uses stack and backtracking to solve the problem, and makes certain to examine all unexamined paths from a given point until a solution is found | 4 pts
 Program properly prints the solved maze, with dots indicating the path thru the maze | 4 pts
 Code style, comments, structure | 3 pts
 
