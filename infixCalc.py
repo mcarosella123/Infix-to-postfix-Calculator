@@ -6,12 +6,9 @@
 from scanner import *
 from tokens import *
 from arraystack import *
-from
- model import *
+from model import *
 
-
-
-sccaclass IFToPFConverter(object):
+class IFToPFConverter(object):
     """Converts an infix expression into a postfix expression."""
     def __init__(self,eachToken):
         self._eachToken = eachToken
@@ -97,10 +94,11 @@ sccaclass IFToPFConverter(object):
             # While expression is done
             while tokensProcessed == len(postfixExp):
                 # Keep popping until empty stack
-                lastOps = opStack.pop()
-                finalExp.append(str(lastOps))
                 if len(opStack) == 0:
                     break
+                else:
+                    lastOps = opStack.pop()
+                    finalExp.append(str(lastOps))
                 
         return finalExp
 
