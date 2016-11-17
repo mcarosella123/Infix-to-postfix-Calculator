@@ -61,6 +61,8 @@ Method `getPrecedence` added to `Token` class; properly returns an integer repre
 Main function continuously prompts user for new infix strings until a blank line is entered | 2 pts
 Code style, comments, structure | 3 pts
 
+### Project score: 20/20 (see itemized values above). Your updated Project 05 (infix calculator) looks good!
+
 
 ## Problem 2: Maze Solver
 
