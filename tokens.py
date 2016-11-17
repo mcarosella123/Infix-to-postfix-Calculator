@@ -41,6 +41,14 @@ class Token(object):
         elif ch == '+': return Token.PLUS
         elif ch == '-': return Token.MINUS
         else:           return Token.UNKNOWN;
+        
+    def getPrecedence(self):
+        
+        if self._value == '*' or self._value == '/': return 2
+        elif self._value == '+' or self._value == '-': return 3
+        elif self._value == "(" or self._value == ")": return "par"
+        else:
+            return 1
 
 def main():
     # A simple tester program
@@ -54,4 +62,3 @@ def main():
 
 if __name__ == '__main__': 
     main()
-
